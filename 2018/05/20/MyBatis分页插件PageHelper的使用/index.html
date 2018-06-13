@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -50,6 +50,10 @@
 
 
 
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
 
 
 
@@ -84,10 +88,10 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":24,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -108,17 +112,20 @@
 
 
 
-  <meta name="keywords" content="现代诗,朦胧诗">
+  <meta name="description" content="本文主要介绍">
+<meta name="keywords" content="分页">
 <meta property="og:type" content="article">
-<meta property="og:title" content="致橡树">
-<meta property="og:url" content="http://yoursite.com/2018/04/18/2018-5-18/index.html">
+<meta property="og:title" content="MyBatis分页插件PageHelper的使用">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/MyBatis分页插件PageHelper的使用/index.html">
 <meta property="og:site_name" content="和风浅挚">
+<meta property="og:description" content="本文主要介绍">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/uploads/06881de9bd2160a6007e316348be587a.png">
-<meta property="og:updated_time" content="2018-05-19T16:54:39.444Z">
+<meta property="og:image" content="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-4.jpg">
+<meta property="og:updated_time" content="2018-05-21T09:02:26.240Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="致橡树">
-<meta name="twitter:image" content="http://yoursite.com/uploads/06881de9bd2160a6007e316348be587a.png">
+<meta name="twitter:title" content="MyBatis分页插件PageHelper的使用">
+<meta name="twitter:description" content="本文主要介绍">
+<meta name="twitter:image" content="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-4.jpg">
 
 
 
@@ -127,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/18/2018-5-18/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/MyBatis分页插件PageHelper的使用/"/>
 
 
 
@@ -137,7 +144,7 @@
   };
 </script>
 
-  <title>致橡树 | 和风浅挚</title>
+  <title>MyBatis分页插件PageHelper的使用 | 和风浅挚</title>
   
 
 
@@ -261,14 +268,6 @@
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-    <a href="/404.html" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />公益 404</a>
-  </li>
 
       
       
@@ -318,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/2018-5-18/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/MyBatis分页插件PageHelper的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -335,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">致橡树
+          <h1 class="post-title" itemprop="name headline">MyBatis分页插件PageHelper的使用
               
             
           </h1>
@@ -360,7 +359,7 @@
                 
               
 
-              <time title="创建时间：2018-04-18 12:39:04" itemprop="dateCreated datePublished" datetime="2018-04-18T12:39:04+08:00">2018-04-18</time>
+              <time title="创建时间：2018-05-20 12:18:02" itemprop="dateCreated datePublished" datetime="2018-05-20T12:18:02+08:00">2018-05-20</time>
             
 
             
@@ -377,7 +376,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-20 00:54:39" itemprop="dateModified" datetime="2018-05-20T00:54:39+08:00">2018-05-20</time>
+                <time title="修改时间：2018-05-21 17:02:26" itemprop="dateModified" datetime="2018-05-21T17:02:26+08:00">2018-05-21</time>
               
             
           </span>
@@ -394,7 +393,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/诗歌/" itemprop="url" rel="index"><span itemprop="name">诗歌</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a></span>
 
                 
                 
@@ -414,6 +413,8 @@
           
 
           
+              <div class="post-description">本文主要介绍</div>
+          
 
         </div>
       </header>
@@ -431,9 +432,9 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/uploads/06881de9bd2160a6007e316348be587a.png" rel="gallery_cjhdnx29300034kg9flcvvdhn"
+                 href="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-4.jpg" rel="gallery_cjicsvr8v0001jwg9ah1yl7cf"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/uploads/06881de9bd2160a6007e316348be587a.png" itemprop="contentUrl"/>
+                <img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-4.jpg" itemprop="contentUrl"/>
               </a>
             
           
@@ -444,11 +445,7 @@
       
 
       
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=4875084&auto=1&height=66"></iframe>
-
-<a id="more"></a>
-<p>我如果爱你——<br>绝不像攀援的凌霄花，<br>借你的高枝炫耀自己；<br>我如果爱你——<br>绝不学痴情的鸟儿，<br>为绿荫重复单调的歌曲；<br>也不止像泉源，<br>常年送来清凉的慰藉；<br>也不止像险峰，<br>增加你的高度，<br>衬托你的威仪。<br>甚至日光，<br>甚至春雨。<br>不，<br>这些都还不够！<br>我必须是你近旁的一株木棉，<br>作为树的形象和你站在一起。<br>根，<br>紧握在地下；<br>叶，<br>相触在云里。<br>每一阵风过，<br>我们都互相致意，<br>但没有人，<br>听懂我们的言语。<br>你有你的铜枝铁干，<br>像刀，<br>像剑，<br>也像戟；<br>我有我红硕的花朵，<br>像沉重的叹息，<br>又像英勇的火炬。<br>我们分担寒潮、<br>风雷、<br>霹雳；<br>我们共享雾霭、<br>流岚、<br>虹霓。<br>仿佛永远分离，<br>却又终身相依。<br>这才是伟大的爱情，<br>坚贞就在这里：<br>爱——<br>不仅爱你伟岸的身躯，<br>也爱你坚持的位置，<br>足下的土地。</p>
-
+        <a id="more"></a>
       
     </div>
 
@@ -481,9 +478,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/现代诗/" rel="tag"><i class="fa fa-tag"></i> 现代诗</a>
-          
-            <a href="/tags/朦胧诗/" rel="tag"><i class="fa fa-tag"></i> 朦胧诗</a>
+            <a href="/tags/分页/" rel="tag"><i class="fa fa-tag"></i> 分页</a>
           
         </div>
       
@@ -496,14 +491,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/19/Hexo搭建个人博客/" rel="next" title="Hexo搭建个人博客">
+                <i class="fa fa-chevron-left"></i> Hexo搭建个人博客
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/19/Hexo搭建个人博客/" rel="prev" title="Hexo搭建个人博客">
-                Hexo搭建个人博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/21/浅析悲观锁和乐观锁/" rel="prev" title="浅析悲观锁和乐观锁">
+                浅析悲观锁和乐观锁 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,7 +572,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -590,7 +589,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -613,7 +616,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -639,12 +650,12 @@
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:15003862279@139.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://plus.google.com/cool" target="_blank" title="Google"><i class="fa fa-fw fa-google"></i>Google</a>
+                  <a href="https://www.google.com" target="_blank" title="Google"><i class="fa fa-fw fa-google"></i>Google</a>
                   
                 </span>
               
@@ -700,7 +711,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共446字</span>
+  <span class="post-count">博客全站共3.0k字</span>
   <br>
 </div>
 <br>
@@ -748,6 +759,8 @@
 
 
 
+  
+
 
 
 
@@ -775,6 +788,11 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
