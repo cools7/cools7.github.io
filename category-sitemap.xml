@@ -22,14 +22,14 @@
 
     <url>
         <loc>http://yoursite.com/categories/MyBatis/</loc>
-        <lastmod>2018-05-21T09:02:26.240Z</lastmod>
+        <lastmod>2018-06-13T07:43:47.869Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/java/</loc>
-        <lastmod>2018-06-13T07:34:20.390Z</lastmod>
+        <lastmod>2018-06-13T07:46:17.636Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

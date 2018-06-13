@@ -112,19 +112,19 @@
 
 
 
-  <meta name="description" content="本文主要介绍">
+  <meta name="description" content="引言 为什么需要锁（并发控制）？  在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。 典型的冲突有：  丢失更新: 一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。 脏读： 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，用">
 <meta name="keywords" content="线程,并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅析悲观锁和乐观锁">
 <meta property="og:url" content="http://yoursite.com/2018/05/21/浅析悲观锁和乐观锁/index.html">
 <meta property="og:site_name" content="和风浅挚">
-<meta property="og:description" content="本文主要介绍">
+<meta property="og:description" content="引言 为什么需要锁（并发控制）？  在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。 典型的冲突有：  丢失更新: 一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。 脏读： 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/uploads/20180520121309.jpg">
-<meta property="og:updated_time" content="2018-05-21T05:57:10.221Z">
+<meta property="og:updated_time" content="2018-06-13T07:44:23.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅析悲观锁和乐观锁">
-<meta name="twitter:description" content="本文主要介绍">
+<meta name="twitter:description" content="引言 为什么需要锁（并发控制）？  在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。 典型的冲突有：  丢失更新: 一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。 脏读： 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，用">
 <meta name="twitter:image" content="http://yoursite.com/uploads/20180520121309.jpg">
 
 
@@ -359,12 +359,24 @@
                 
               
 
-              <time title="创建时间：2018-05-21 11:57:55 / 修改时间：13:57:10" itemprop="dateCreated datePublished" datetime="2018-05-21T11:57:55+08:00">2018-05-21</time>
+              <time title="创建时间：2018-05-21 11:57:55" itemprop="dateCreated datePublished" datetime="2018-05-21T11:57:55+08:00">2018-05-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-13 15:44:23" itemprop="dateModified" datetime="2018-06-13T15:44:23+08:00">2018-06-13</time>
               
             
           </span>
@@ -401,8 +413,6 @@
           
 
           
-              <div class="post-description">本文主要介绍</div>
-          
 
         </div>
       </header>
@@ -420,7 +430,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="/uploads/20180520121309.jpg" rel="gallery_cjicsvrfq000djwg9kdhknila"
+                 href="/uploads/20180520121309.jpg" rel="gallery_cjictb9l900073wg9mxxzlo0f"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/uploads/20180520121309.jpg" itemprop="contentUrl"/>
               </a>
@@ -443,6 +453,7 @@
 <li><strong>丢失更新: </strong>一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。</li>
 <li><strong>脏读：</strong> 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，用户B把值改为2，用户A读到的值仍为6。</li>
 </ul>
+<a id="more"></a>
 <blockquote>
 <p>为了解决这些并发带来的问题。 我们需要引入并发控制机制。</p>
 </blockquote>
