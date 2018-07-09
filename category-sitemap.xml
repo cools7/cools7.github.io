@@ -8,28 +8,35 @@
 
     <url>
         <loc>http://yoursite.com/categories/MyBatis/</loc>
-        <lastmod>2018-06-13T07:55:29.427Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/categories/java/</loc>
-        <lastmod>2018-06-13T07:55:29.522Z</lastmod>
+        <lastmod>2018-06-13T07:57:00.079Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/%E8%AF%97%E6%AD%8C/</loc>
-        <lastmod>2018-06-13T07:55:29.551Z</lastmod>
+        <lastmod>2018-06-13T07:57:00.337Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://yoursite.com/categories/%E5%8D%9A%E5%AE%A2/</loc>
-        <lastmod>2018-06-13T07:55:29.585Z</lastmod>
+        <lastmod>2018-06-13T07:57:00.380Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/java/</loc>
+        <lastmod>2018-07-09T01:55:46.560Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/categories/%E5%88%86%E7%B1%BB/</loc>
+        <lastmod>2018-07-09T02:00:30.103Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

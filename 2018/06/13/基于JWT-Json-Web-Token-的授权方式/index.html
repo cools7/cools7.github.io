@@ -112,20 +112,18 @@
 
 
 
-  <meta name="description" content="引言 为什么需要锁（并发控制）？  在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。 典型的冲突有：  丢失更新:  一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。 脏读： 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，">
-<meta name="keywords" content="线程,并发">
+  <meta name="description" content="JWT简介 JWT(json web token)是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准。  JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源。比如用在用户登录上。">
+<meta name="keywords" content="鉴权,Token">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅析悲观锁和乐观锁">
-<meta property="og:url" content="http://yoursite.com/2018/05/21/浅析悲观锁和乐观锁/index.html">
+<meta property="og:title" content="基于JWT(Json Web Token)的授权方式">
+<meta property="og:url" content="http://yoursite.com/2018/06/13/基于JWT-Json-Web-Token-的授权方式/index.html">
 <meta property="og:site_name" content="和风浅挚">
-<meta property="og:description" content="引言 为什么需要锁（并发控制）？  在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。 典型的冲突有：  丢失更新:  一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。 脏读： 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，">
+<meta property="og:description" content="JWT简介 JWT(json web token)是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准。  JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源。比如用在用户登录上。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/uploads/20180520121309.jpg">
-<meta property="og:updated_time" content="2018-07-09T01:55:46.560Z">
+<meta property="og:updated_time" content="2018-06-13T09:31:53.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅析悲观锁和乐观锁">
-<meta name="twitter:description" content="引言 为什么需要锁（并发控制）？  在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。 典型的冲突有：  丢失更新:  一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。 脏读： 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，">
-<meta name="twitter:image" content="http://yoursite.com/uploads/20180520121309.jpg">
+<meta name="twitter:title" content="基于JWT(Json Web Token)的授权方式">
+<meta name="twitter:description" content="JWT简介 JWT(json web token)是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准。  JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源。比如用在用户登录上。">
 
 
 
@@ -134,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/21/浅析悲观锁和乐观锁/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/13/基于JWT-Json-Web-Token-的授权方式/"/>
 
 
 
@@ -144,7 +142,7 @@
   };
 </script>
 
-  <title>浅析悲观锁和乐观锁 | 和风浅挚</title>
+  <title>基于JWT(Json Web Token)的授权方式 | 和风浅挚</title>
   
 
 
@@ -317,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/21/浅析悲观锁和乐观锁/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/基于JWT-Json-Web-Token-的授权方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -334,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浅析悲观锁和乐观锁
+          <h1 class="post-title" itemprop="name headline">基于JWT(Json Web Token)的授权方式
               
             
           </h1>
@@ -359,24 +357,12 @@
                 
               
 
-              <time title="创建时间：2018-05-21 11:57:55" itemprop="dateCreated datePublished" datetime="2018-05-21T11:57:55+08:00">2018-05-21</time>
+              <time title="创建时间：2018-06-13 17:27:02 / 修改时间：17:31:53" itemprop="dateCreated datePublished" datetime="2018-06-13T17:27:02+08:00">2018-06-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-09 09:55:46" itemprop="dateModified" datetime="2018-07-09T09:55:46+08:00">2018-07-09</time>
               
             
           </span>
@@ -425,50 +411,80 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="/uploads/20180520121309.jpg" rel="gallery_cjjdm8jiw0006i4g9thjqjtcm"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="/uploads/20180520121309.jpg" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <hr>
-<h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><blockquote>
-<p>为什么需要锁（并发控制）？</p>
+        <h4 id="JWT简介"><a href="#JWT简介" class="headerlink" title="JWT简介"></a>JWT简介</h4><blockquote>
+<p>JWT(json web token)是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准。</p>
 </blockquote>
-<p>在多用户环境中，在同一时间可能会有多个用户更新相同的记录，这会产生冲突。这就是著名的并发性问题。</p>
-<p>典型的冲突有：</p>
-<ul>
-<li><strong>丢失更新: </strong> 一个事务的更新覆盖了其它事务的更新结果，就是所谓的更新丢失。例如：用户A把值从6改为2，用户B把值从2改为6，则用户A丢失了他的更新。</li>
-<li><strong>脏读：</strong> 当一个事务读取其它完成一半事务的记录时，就会发生脏读取。例如：用户A,B看到的值都是6，用户B把值改为2，用户A读到的值仍为6。</li>
-</ul>
+<p>JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源。比如用在用户登录上。</p>
 <a id="more"></a>
 <blockquote>
-<p>为了解决这些并发带来的问题。 我们需要引入并发控制机制。</p>
+<p>基于session的登录认证</p>
 </blockquote>
-<h4 id="悲观锁-Pessimistic-Lock"><a href="#悲观锁-Pessimistic-Lock" class="headerlink" title="悲观锁(Pessimistic Lock)"></a>悲观锁(Pessimistic Lock)</h4><blockquote>
-<p>假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作。</p>
+<p>在传统的用户登录认证中，因为http是无状态的，所以都是采用session方式。用户登录成功，服务端会保证一个session，当然会给客户端一个sessionId，客户端会把sessionId保存在cookie中，每次请求都会携带这个sessionId。<br>cookie+session这种模式通常是保存在内存中，而且服务从单服务到多服务会面临的session共享问题，随着用户量的增多，开销就会越大。而JWT不是这样的，只需要服务端生成token，客户端保存这个token，每次请求携带这个token，服务端认证解析就可。</p>
+<p>JWT生成Token后的样子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.</span><br><span class="line">eyJvcmciOiLku4rml6XlpLTmnaEiLCJuYW1lIjoiRnJlZeeggeWGnCIsImV4cCI6MTUxNDM1NjEwMywiaWF0IjoxNTE0MzU2MDQzLCJhZ2UiOiIyOCJ9.</span><br><span class="line">49UF72vSkj-sA4aHHiYN5eoZ9Nb4w5Vb45PsLF7x_NY</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JWT的构成</p>
 </blockquote>
-<p>顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。它指的是对数据被外界（包括本系统当前的其他事务，以及来自外部系统的事务处理）修改持保守态度，因此，在整个数据处理过程中，将数据处于锁定状态。悲观锁的实现，往往依靠数据库提供的锁机制（也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则，即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据）。</p>
-<h4 id="乐观锁-Optimistic-Lock"><a href="#乐观锁-Optimistic-Lock" class="headerlink" title="乐观锁(Optimistic Lock)"></a>乐观锁(Optimistic Lock)</h4><blockquote>
-<p>假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。 乐观锁不能解决脏读的问题。</p>
+<p>第一部分我们称它为头部（header),第二部分我们称其为载荷（payload)，第三部分是签证（signature)。</p>
+<ul>
+<li>header</li>
+</ul>
+<p>jwt的头部承载两部分信息：</p>
+<p>声明类型，这里是jwt</p>
+<p>声明加密的算法 通常直接使用 HMAC SHA256</p>
+<p>完整的头部就像下面这样的JSON：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&quot;typ&quot;: &quot;JWT&quot;,</span><br><span class="line"></span><br><span class="line">&quot;alg&quot;: &quot;HS256&quot;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后将头部进行base64加密（该加密是可以对称解密的),构成了第一部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><br></pre></td></tr></table></figure>
+<ul>
+<li>playload</li>
+</ul>
+<p>载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分</p>
+<p>标准中注册的声明</p>
+<p>公共的声明</p>
+<p>私有的声明</p>
+<p>标准中注册的声明 (建议但不强制使用) ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">iss: jwt签发者</span><br><span class="line"></span><br><span class="line">sub: jwt所面向的用户</span><br><span class="line"></span><br><span class="line">aud: 接收jwt的一方</span><br><span class="line"></span><br><span class="line">exp: jwt的过期时间，这个过期时间必须要大于签发时间</span><br><span class="line"></span><br><span class="line">nbf: 定义在什么时间之前，该jwt都是不可用的.</span><br><span class="line"></span><br><span class="line">iat: jwt的签发时间</span><br><span class="line"></span><br><span class="line">jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>公共的声明 ：</p>
 </blockquote>
-<p>顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库如果提供类似于write_condition机制的其实都是提供的乐观锁。</p>
-<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><p>两种锁各有优缺点，不可认为一种好于另一种，像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行retry，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适。</p>
-<h4 id="悲观锁应用"><a href="#悲观锁应用" class="headerlink" title="悲观锁应用"></a>悲观锁应用</h4><h4 id="乐观锁应用"><a href="#乐观锁应用" class="headerlink" title="乐观锁应用"></a>乐观锁应用</h4><p>1.使用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式。何谓数据版本？即为数据增加一个版本标识，一般是通过为数据库表增加一个数字类型的 “version” 字段来实现。当读取数据时，将version字段的值一同读出，数据每更新一次，对此version值加一。当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的version值进行比对，如果数据库表当前版本号与第一次取出来的version值相等，则予以更新，否则认为是过期数据。用下面的一张图来说明：<br><img src="/images/2018-5-21/22a9518f-e355-315f-8d66-d91af4fda723.jpg" alt="Alt text"><br>如上图所示，如果更新操作顺序执行，则数据的版本（version）依次递增，不会产生冲突。但是如果发生有不同的业务操作对同一版本的数据进行修改，那么，先提交的操作（图中B）会把数据version更新为2，当A在B之后提交更新时发现数据的version已经被修改了，那么A的更新操作会失败。</p>
-<p>2.乐观锁定的第二种实现方式和第一种差不多，同样是在需要乐观锁控制的table中增加一个字段，名称无所谓，字段类型使用时间戳（timestamp）, 和上面的version类似，也是在更新提交的时候检查当前数据库中数据的时间戳和自己更新前取到的时间戳进行对比，如果一致则OK，否则就是版本冲突。</p>
-<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>在实际生产环境里边,如果并发量不大且不允许脏读，可以使用悲观锁解决并发问题；但如果系统的并发非常大的话,悲观锁定会带来非常大的性能问题,所以我们就要选择乐观锁定的方法.</p>
+<p>公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息.但不建议添加敏感信息，因为该部分在客户端可解密.</p>
+<blockquote>
+<p>私有的声明 ：</p>
+</blockquote>
+<p>私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息。</p>
+<p>定义一个payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&quot;name&quot;:&quot;cool&quot;,</span><br><span class="line"></span><br><span class="line">&quot;age&quot;:&quot;28&quot;,</span><br><span class="line"></span><br><span class="line">&quot;org&quot;:&quot;讯飞快读&quot;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后将其进行base64加密，得到Jwt的第二部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJvcmciOiLku4rml6XlpLTmnaEiLCJuYW1lIjoiRnJlZeeggeWGnCIsImV4cCI6MTUxNDM1NjEwMywiaWF0IjoxNTE0MzU2MDQzLCJhZ2UiOiIyOCJ9</span><br></pre></td></tr></table></figure>
+<ul>
+<li>signature</li>
+</ul>
+<p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">header (base64后的)</span><br><span class="line"></span><br><span class="line">payload (base64后的)</span><br><span class="line"></span><br><span class="line">secret</span><br></pre></td></tr></table></figure>
+<p>这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">49UF72vSkj-sA4aHHiYN5eoZ9Nb4w5Vb45PsLF7x_NY</span><br></pre></td></tr></table></figure>
+<p>密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和验证，所以需要保护好。</p>
+<h4 id="java方式实现"><a href="#java方式实现" class="headerlink" title="java方式实现"></a>java方式实现</h4><ul>
+<li>Maven</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;com.auth0&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;java-jwt&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;3.1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>加密与校验代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class JwtToken &#123;</span><br><span class="line"></span><br><span class="line">    public static String SECRET = &quot;iflytek&quot;;</span><br><span class="line"></span><br><span class="line">    public static String createToken() throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        Date iatDate = new Date();</span><br><span class="line"></span><br><span class="line">        Calendar newTime = Calendar.getInstance();</span><br><span class="line">        newTime.add(Calendar.MINUTE, 60*3);</span><br><span class="line">        Date expiresDate = newTime.getTime();</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(&quot;alg&quot;, &quot;HS256&quot;);</span><br><span class="line">        map.put(&quot;typ&quot;, &quot;JWT&quot;);</span><br><span class="line">        String token = JWT.create()</span><br><span class="line">                .withHeader(map)</span><br><span class="line">                .withClaim(&quot;name&quot;, &quot;cool&quot;)</span><br><span class="line">                .withClaim(&quot;org&quot;, &quot;快读&quot;)</span><br><span class="line">                .withExpiresAt(expiresDate)</span><br><span class="line">                .withIssuedAt(iatDate)</span><br><span class="line">                .sign(Algorithm.HMAC256(SECRET));</span><br><span class="line">        return token;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Map&lt;String, Claim&gt; verifyToken(String token) throws Exception &#123;</span><br><span class="line">        JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET)).build();</span><br><span class="line">        DecodedJWT jwt = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            jwt = verifier.verify(token);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            throw new RuntimeException(&quot;登录过期，请重新登录&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return jwt.getClaims();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line"></span><br><span class="line">        String token=JwtToken.createToken();</span><br><span class="line">        log.info(token);</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Claim&gt; claimMap=JwtToken.verifyToken(token);</span><br><span class="line"></span><br><span class="line">        log.info(claimMap.get(&quot;name&quot;).asString());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Map&lt;String, Claim&gt; sb=JwtToken.verifyToken(&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmciOiLlv6vor7siLCJuYW1lIjoiY29vbCIsImV4cCI6MTUyODk2NjYxNywiaWF0IjoxNTI4ODgwMjE3fQ.HiQkHzvrcWhOmbfZT4ba5kNf8ePLJiu673f8fKLxrPQ&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JWT总结</p>
+</blockquote>
+<p>1、因为json的通用性，所以JWT是可以进行跨语言支持的，像JAVA,JavaScript,NodeJS,PHP等很多语言都可以使用。</p>
+<p>2、payload部分，JWT可以在自身存储一些其他业务逻辑所必要的非敏感信息。</p>
+<p>3、便于传输，jwt的构成非常简单，字节占用很小，所以它是非常便于传输的。它不需要在服务端保存会话信息, 所以它易于应用的扩展</p>
 
       
     </div>
@@ -502,9 +518,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/线程/" rel="tag"><i class="fa fa-tag"></i> 线程</a>
+            <a href="/tags/鉴权/" rel="tag"><i class="fa fa-tag"></i> 鉴权</a>
           
-            <a href="/tags/并发/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
+            <a href="/tags/Token/" rel="tag"><i class="fa fa-tag"></i> Token</a>
           
         </div>
       
@@ -517,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/20/MyBatis分页插件PageHelper的使用/" rel="next" title="MyBatis分页插件PageHelper的使用">
-                <i class="fa fa-chevron-left"></i> MyBatis分页插件PageHelper的使用
+              <a href="/2018/06/12/深拷贝与浅拷贝/" rel="next" title="深拷贝与浅拷贝">
+                <i class="fa fa-chevron-left"></i> 深拷贝与浅拷贝
               </a>
             
           </div>
@@ -527,8 +543,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/12/深拷贝与浅拷贝/" rel="prev" title="深拷贝与浅拷贝">
-                深拷贝与浅拷贝 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/03/Windows下写shell脚本到Linux下执行遇到的问题及解决方案/" rel="prev" title="Windows下写shell脚本到Linux下执行遇到的问题及解决方案">
+                Windows下写shell脚本到Linux下执行遇到的问题及解决方案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -736,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#悲观锁-Pessimistic-Lock"><span class="nav-number">2.</span> <span class="nav-text">悲观锁(Pessimistic Lock)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁-Optimistic-Lock"><span class="nav-number">3.</span> <span class="nav-text">乐观锁(Optimistic Lock)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优缺点"><span class="nav-number">4.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#悲观锁应用"><span class="nav-number">5.</span> <span class="nav-text">悲观锁应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁应用"><span class="nav-number">6.</span> <span class="nav-text">乐观锁应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">7.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JWT简介"><span class="nav-number">1.</span> <span class="nav-text">JWT简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java方式实现"><span class="nav-number">2.</span> <span class="nav-text">java方式实现</span></a></li></ol></div>
             
 
           </div>
